@@ -1,69 +1,144 @@
+'use client';
+
+import { Geist, Geist_Mono } from "next/font/google";
 import Image from "next/image";
+import ParticleBackground from "@/components/ParticleBackground";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollReveal from "@/components/ScrollReveal";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const images = [
+  { src: "/images/img1.jpg", alt: "Portrait by doorway", title: "Doorway", desc: "Urban Series" },
+  { src: "/images/img2.jpg", alt: "Woman with collectible toy", title: "Collectible", desc: "Indoor Moment" },
+  { src: "/images/img3.jpg", alt: "Woman in traditional hanbok", title: "Hanbok", desc: "Traditional" },
+  { src: "/images/img4.jpg", alt: "Woman making heart gesture", title: "Heart", desc: "Outdoor Field" },
+  { src: "/images/img5.jpg", alt: "Woman by stone wall with painting", title: "Portrait", desc: "Reflection" },
+  { src: "/images/img6.jpg", alt: "Close-up in hanbok", title: "Close-up", desc: "Detail Study" },
+  { src: "/images/img7.jpg", alt: "Woman in black shirt", title: "Chaos", desc: "Studio" },
+  { src: "/images/img8.jpg", alt: "Portrait session", title: "Session", desc: "Portrait" },
+  { src: "/images/img9.jpg", alt: "Additional portrait", title: "Moment", desc: "Candid" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <html lang="id" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <title>Portfolio | Cinematic Motion</title>
+        <meta name="description" content="Cinematic portfolio with motion design" />
+      </head>
+      <body className="min-h-full flex flex-col">
+        <ParticleBackground />
+        <CustomCursor />
+        
+        {/* Hero Section */}
+        <section className="hero section">
+          <div className="hero-content container">
+            <ScrollReveal delay={100}>
+              <p className="hero-subtitle">Cinematic Portfolio</p>
+            </ScrollReveal>
+            <ScrollReveal delay={200}>
+              <h1 className="hero-title">Visual<br />Stories</h1>
+            </ScrollReveal>
+            <ScrollReveal delay={400}>
+              <div className="cutout-portrait">
+                <Image
+                  src="/images/img1.jpg"
+                  alt="Hero portrait"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 90vw, 500px"
+                  className="object-cover"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={600}>
+              <p className="hero-subtitle" style={{ marginBottom: 0 }}>
+                Scroll to explore
+              </p>
+            </ScrollReveal>
+            <div className="scroll-indicator" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Section */}
+        <section className="section" id="gallery">
+          <div className="container">
+            <ScrollReveal delay={100}>
+              <h2 className="section-title">Gallery</h2>
+            </ScrollReveal>
+            <div className="gallery-grid">
+              {images.map((img, index) => (
+                <ScrollReveal key={img.src} delay={150 + index * 80} className="reveal-delay-1">
+                  <article className="gallery-item">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 300px"
+                      className="object-cover"
+                    />
+                    <div className="gallery-item-caption">
+                      <h3>{img.title}</h3>
+                      <p>{img.desc}</p>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="section" id="about">
+          <div className="container">
+            <ScrollReveal delay={100}>
+              <h2 className="section-title">About</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={200} className="about-content">
+              <p className="about-text">
+                <strong>Visual storytelling</strong> through the lens of motion and emotion. 
+                Each frame captures a moment suspended in time — where light, composition, 
+                and human expression converge to create narratives that linger.
+              </p>
+              <p className="about-text">
+                This portfolio explores the intersection of <strong>portrait photography</strong> 
+                and <strong>motion design</strong>, blending cinematic aesthetics with 
+                interactive web experiences. Built with Next.js, GSAP, and custom particle systems.
+              </p>
+              <p className="about-text" style={{ marginBottom: 0 }}>
+                Crafted with intention. Every transition, every particle, every reveal — 
+                designed to serve the story, not distract from it.
+              </p>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="footer section">
+          <div className="container">
+            <div className="footer-links">
+              <a href="#gallery">Gallery</a>
+              <a href="#about">About</a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:hello@example.com">Contact</a>
+            </div>
+            <p className="footer-copyright">© 2025 Cinematic Portfolio. Built with Next.js & GSAP.</p>
+          </div>
+        </footer>
+      </body>
+    </html>
   );
 }
